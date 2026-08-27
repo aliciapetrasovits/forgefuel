@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ForgeFuel</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/app.js" defer></script>
+
+    </head>
+    <body>
+<header>
+    <h1>ForgeFuel</h1>
+    <p>Your self-hosted fitness and nutrition tracker.</p>
+</header>
+<nav>
+    <button type="button" data-page="dashboard" class="active">Dashboard</button>
+    <button type="button" data-page="gym">Gym</button>
+    <button type="button" data-page="kitchen">Kitchen</button>
+</nav>
+ <main>
+    <section id="dashboard" class="page active">
+
+        <h2>Dashboard</h2>
+        <p>Track your training, nutrition, and pantry in one place.</p>
+
+        <div class="dashboard-summary">
+            <p>Saved workouts: <strong id="workout-count">0</strong></p>
+            <p>Pantry: <strong id="food-count">0</strong></p>
+            <p>Total calories:<strong id="calorie-total">0</strong>kcal</p>
+        </div>
+    </section>
+    <section id="gym" class="page">
+
+        <h2>Gym</h2>
+        <p>Record your exercises, sets, reps, and weights.</p>
+    <form id="workout-form">
+        <label for="exercise">Exercise</label> 
+            <input type="text" id="exercise" required>
+        <label for="weight">Weight (kg)</label>
+            <input type="number" id="weight" min="0" step="0.5" required>
+        <label for="sets">Sets</label>
+            <input type="number" id="sets" min="1" step="1" required>
+        <label for="reps">Reps</label>
+            <input type="number" id="reps" min="1" step="1" required>
+        <button type="submit">Add Workout</button>
+    </form>
+    <h3>Workout history</h3>
+    <ul id="workout-list"></ul>
+
+    </section>
+    <section id="kitchen" class="page">
+        <h2>Kitchen</h2>
+        <p>Manage your recipes, ingredients, and meal plans.</p>
+    <form id="food-form"> 
+            <label for="food-name">food</label>
+            <select id="food-name" required>
+               <option value="">Select a food</option>
+               <option value="chicken-breast">Chicken Breast</option>
+
+            </select>
+
+       
+        
+            <label for="quantity">Amount (g)</label>
+            <input type="number" id="quantity" min="1" step="1" required>
+            <label for="calories">Calories</label>
+            <input type="number" id="calories" readonly>
+            <label for="protein">Protein (g)</label>
+            <input type="number" id="protein" readonly>
+            <label for="carbs">Carbs (g)</label>
+            <input type="number" id="carbs"readonly>
+            <label for="fat">Fat (g)</label>
+            <input type="number" id="fat" readonly>
+            <button type="submit">Add Food</button>
+    </form>
+           <h3>Pantry</h3>
+              <ul id="food-list"></ul>
+    </section>
+
+
+ </main>  
+
+
+</body>
+</html>
+
