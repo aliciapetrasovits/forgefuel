@@ -5,6 +5,10 @@ const workoutList = document.getElementById("workout-list");
 const workoutCount = document.getElementById("workout-count");
 const foodCount = document.getElementById("food-count");
 const calorieTotal = document.getElementById("calorie-total");
+const proteinTotal = document.getElementById("protein-total");
+const carbsTotal = document.getElementById("carbs-total");
+const fatTotal = document.getElementById("fat-total");
+
 const foodDatabase = {
     "chicken-breast": {
         calories: 165,
@@ -149,5 +153,71 @@ function updateDashboard(){
         return total + Number (food.calories);
     }, 0);
     calorieTotal.textContent = totalCalories.toFixed(1);
+    proteinTotal.textContent = foods
+    .reduce((total,food) => total + Number(food.protein), 0)
+    .toFixed(1)
+    carbsTotal.textContent = foods
+    .reduce((total,food) => total + Number(food.carbs), 0)
+    .toFixed(1)
+    fatTotal.textContent = foods
+    .reduce((total,food) => total + Number(food.fat), 0)
+    .toFixed(1)
 }
+
 updateDashboard();
+const exportButton = document.getElementById("export-data");
+exportButton.addEventListener("click", function(){
+    const backup = {
+        exportedAt: new Date().toISOString(),
+        workouts: workouts,
+        foods: foods
+     };
+     const file = new Blob(
+        [JSON.stringify(backup, null, 2)],
+        {type:"application/json"}
+     );
+     const downloadLink = document.createElement("a");
+     downloadLink.href = URL.createObjectURL(file);
+     downloadLink.download = "forgefuel-bacpup.json";
+
+     URL.revokeObjectURL(downloadLink.href);
+
+});
+const importButton = document.getElementById("import-data-button");
+const importInput = document.getElementById("import-data");
+importButton.addEventListener("click", function () {
+});
+importInput.addEventListener("change",function () {
+    const file = importInput.files[0];
+    if (!file){
+        return;
+    }
+    const reader = new FileReader();
+    reader.addEventListener ("load", function() {
+        try{
+            const backup = JSON.parse(reader.result);
+            if (!Array.isArray(backup.workouts)|| !Array.issArray(backup.foods)){
+             throw new Error("Invalid backp");   
+            }
+            const confirmed = confirm(
+                "Importing will replace your current Forgefuel data. Continue?"
+            );
+            if (!confiremed){
+                return;
+            }
+            localStorage.setItem(
+                "forgrfuelWorkoutsV2",
+                JSON.stringify(backup.workouts)
+            );
+            localStorage.setItem(
+                "forgefuelWorkoutsV2",
+                JSON.stringify(backup.foods)
+            );
+            localStorage.reload();
+        }catch{
+            alert("This is not a valid ForgeFuel backup file.");
+        }
+
+    });
+    reader.readAsText(file);
+});
