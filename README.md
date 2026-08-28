@@ -15,11 +15,14 @@ ForgeFul is a responsive, self-hosted fitness and nutrition tracker.It combines 
 - CSS
 - JavaScript
 - Browser localStorage
+- Node.js
+- Express
 ## How to run
 1. Download or clone this repository
-2. Open the project in Visual Studio COde
-3. Open `index.html` with Live server
-4. Your data will be stored locally in your browser
+2. Install Node.js
+3. Run `npm install`.
+4: Run` npm start`.
+5. Open `https://localhost:3000`.
 
 ## Privacy
 Forgefuel stores workout and food data directly in the user's browser. The current version does not send personal data to an external server.

@@ -1,0 +1,25 @@
+{
+  "name": "forgefuel",
+  "version": "1.0.0",
+  "description": "ForgeFul is a responsive, self-hosted fitness and nutrition tracker.It combines workout logging with a food pantry and automatic nutrition calculations.\r ## Features\r - Switch between Dashboard, Gym and Kitchen pages\r - Record exercises, weights, sets and reps\r - Delete saved workouts\r - Calculate nutrition based on food weight in grams\r - Save and delete pantry items \r - View wokrout, pnatry and calorie totals\r - Keep data afer refreshing with localStorage\r - Responsive desing for desktop and mobile",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliciapetrasovits/forgefuel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/aliciapetrasovits/forgefuel/issues"
+  },
+  "homepage": "https://github.com/aliciapetrasovits/forgefuel#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
